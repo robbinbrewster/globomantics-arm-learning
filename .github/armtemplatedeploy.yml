@@ -19,7 +19,9 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - name: Azure Login
+      - name: Login to Azure
         uses: Azure/login@v1
+        env:
+        CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS}}
+          creds: ${{ env.CREDENTIALS}}
