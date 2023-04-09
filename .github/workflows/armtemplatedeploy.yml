@@ -22,4 +22,4 @@ jobs:
       - name: Azure Login
         uses: Azure/login@v1
         with:
-          creds: ${{ secret.AZURE_GLOBOMANTICS_CREDENTIALS}}
+          creds: ${{ secrets.AZURE_GLOBOMANTICS_CREDENTIALS}}
