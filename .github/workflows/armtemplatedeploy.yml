@@ -22,4 +22,4 @@ jobs:
       - name: Azure Login
         uses: Azure/login@v1
         with:
-          creds: ${{ secrets.AZURE.CREDENTIALS}}
+          creds: '{"clientId":"${{ secrets.878809ce-deff-45f1-8299-d5df1b418a9e }}","clientSecret":"${{ secrets.KDD8Q~l_l_lHE8hqJSyPA6Y.jo22XRHFWXhtQbkL }}","subscriptionId":"${{ secrets.8bf5716e-cbb9-4bef-86f6-42ed7d1a872a }}","tenantId":"${{ secrets.ac1df4ad-5702-41e4-8882-db5c910ca664 }}"}'
