@@ -9,7 +9,7 @@ on:
 permissions:
   id-token: write
   contents: read
-  
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -32,4 +32,8 @@ jobs:
 
           subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
           # creds: ${{ secrets.AZURE.CREDENTIALS}}
-          
+
+      - name: Deploy Resource Group rg-githubactions with AZ CLI
+        uses: Azure/cli@1.0.4
+        with:
+          inlinescript: az deployment sub create --location "West europe" --template-file ./arm-templates/resourcegroup.json
