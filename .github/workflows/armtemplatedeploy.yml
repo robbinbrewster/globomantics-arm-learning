@@ -7,7 +7,7 @@ on:
   push:
     branches:
     - main
-    
+
 permissions:
   id-token: write
   contents: read
@@ -38,4 +38,5 @@ jobs:
       - name: Deploy Resource Group rg-githubactions with AZ CLI
         uses: Azure/cli@1.0.4
         with:
-          inlinescript: az deployment sub create --location "West europe" --template-file ./arm-templates/resourcegroup.json
+          inlinescript: |
+            az deployment sub create --location "Westeurope" --template-file ./arm-templates/resourcegroup.json
