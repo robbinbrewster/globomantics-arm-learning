@@ -27,9 +27,9 @@
         {
             "name": "[parameters('storageAccountName')]",
             "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2021-04-01",
+            "apiVersion": "2021-01-01",
             "tags": {
-                "displayName": "[ parameters('storageAccountName')]"
+                "displayName": "[parameters('storageAccountName')]"
             },
             "location": "[parameters('location')]",
             "kind": "StorageV2",
@@ -42,7 +42,7 @@
     "outputs": {
         "BlobUri": {
             "type": "string",
-            "value": "[reference(resourceId('Microsoft.Storage/storageAccounts',parameters('storageAccountName'))).primaryEndpoints.blob]"
+            "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))).primaryEndpoints.blob]"
         }
     }
 }
