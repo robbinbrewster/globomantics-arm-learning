@@ -7,12 +7,12 @@
             "metadata": {
                 "description": "Enter the location to deploy the resource to"
             },
-            "defaultValue": "westeurope"
+            "defaultValue": "Westeurope "
         },
         "resourceGroupName": {
             "type": "string",
             "metadata": {
-                "description": "enter the name for the resource group"
+                "description": "Enter the name for the resource group"
             },
             "defaultValue": "rg-githubactions"
         }
@@ -26,10 +26,8 @@
             "apiVersion": "2021-01-01",
             "location": "[parameters('location')]",
             "dependsOn": [
-
             ],
             "tags": {
-
             }
         }
     ],

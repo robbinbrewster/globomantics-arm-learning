@@ -27,7 +27,7 @@
         {
             "name": "[parameters('storageAccountName')]",
             "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2021-01-01",
+            "apiVersion": "2019-06-01",
             "tags": {
                 "displayName": "[parameters('storageAccountName')]"
             },
@@ -39,10 +39,5 @@
             }
         }
     ],
-    "outputs": {
-        "BlobUri": {
-            "type": "string",
-            "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))).primaryEndpoints.blob]"
-        }
-    }
+    "outputs": {}
 }
