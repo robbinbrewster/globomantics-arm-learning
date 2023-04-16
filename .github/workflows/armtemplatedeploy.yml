@@ -53,6 +53,6 @@ jobs:
           template: ./arm-templates/storageaccount.json
           parameters: 
             ./arm-templates/storageaccount.parameters.json
-            StorageAccountName=Robbin002
+            storageAccountName=Robbin002
             location="Westeurope"
           deploymentMode: incremental
