@@ -6,7 +6,7 @@ name: armtemplatedeploy
 on:
   push:
     branches:
-    - main
+      - main
 
 permissions:
   id-token: write
@@ -42,8 +42,7 @@ jobs:
           subscriptionId: 8bf5716e-cbb9-4bef-86f6-42ed7d1a872a
           region: Westeurope
           template: ./arm-templates/resourcegroup.json
-          parameters:
-            location="Westeurope"
+          parameters: location="Westeurope"
             resourceGroupName=rg-githubactions
           deploymentName: rg-githubactions
 
@@ -55,21 +54,17 @@ jobs:
           resourceGroupName: rg-githubactions
           subscriptionId: 8bf5716e-cbb9-4bef-86f6-42ed7d1a872a
           template: ./arm-templates/storageaccount.json
-          parameters: 
-            sku=Standard_LRS
+          parameters: sku=Standard_LRS
             storageAccountName=robbin003
             location="Westeurope"
           deploymentMode: incremental
 
-      - name: Deploy virtual machine
+      - name: Deploy Virtual Machine
         uses: Azure/arm-deploy@v1
         with:
           scope: resourcegroup
           resourceGroupName: rg-githubactions
           subscriptionId: 8bf5716e-cbb9-4bef-86f6-42ed7d1a872a
           template: ./arm-templates/virtualmachine.json
-          parameters: 
-           adminpassword=${{secrets.TEST_BUILDAGENT_ADMIN_PASSWORD}}
+          parameters: adminPassword=${{ secrets.TEST.BUILDAGENT_ADMIN_PASSWORD }}
           deploymentMode: incremental
-
-   
