@@ -22,7 +22,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
       - name: Azure Login
@@ -69,7 +69,7 @@ jobs:
           subscriptionId: 8bf5716e-cbb9-4bef-86f6-42ed7d1a872a
           template: ./arm-templates/virtualmachine.json
           parameters: 
-           adminpassword= ${{secrets.TEST_BUILDAGENT_ADMIN_PASSWORD}}
+           adminpassword=${{secrets.TEST_BUILDAGENT_ADMIN_PASSWORD}}
           deploymentMode: incremental
 
    
