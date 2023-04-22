@@ -14,7 +14,7 @@ permissions:
 
 env:
   resource_group_name: rg-githubactions
-  location: "WestEurope"
+  location: WestEurope
   subscriptionsId: 8bf5716e-cbb9-4bef-86f6-42ed7d1a872a
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -45,9 +45,9 @@ jobs:
         with:
           scope: ${{ env.subscriptionId }}
           subscriptionId: ${{ env.subscriptionId }}
-          region: ${{ env.location }}
+          region: "${{ env.location }}"
           template: ./arm-templates/resourcegroup.json
-          parameters: location= ${{ env.location }}
+          parameters: location= "${{ env.location }}"
             resourceGroupName=${{ env.resource_group_name }}
           deploymentName: rg-githubactions
 
@@ -61,7 +61,7 @@ jobs:
           template: ./arm-templates/storageaccount.json
           parameters: sku=Standard_LRS
             storageAccountName=robbin003
-            location= ${{ env.location }}
+            location= "${{ env.location }}"
           deploymentMode: incremental
 
       - name: Deploy Virtual Machine
