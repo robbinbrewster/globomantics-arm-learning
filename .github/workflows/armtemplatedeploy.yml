@@ -12,6 +12,11 @@ permissions:
   id-token: write
   contents: read
 
+env:
+  resource_group_name: rg-githubactions
+  location: "WestEurope"
+  subscriptionsId: 8bf5716e-cbb9-4bef-86f6-42ed7d1a872a
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -35,15 +40,15 @@ jobs:
           subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
           # creds: ${{ secrets.AZURE.CREDENTIALS}}
 
-      - name: Deploy Resource Group rg-githubactions
+      - name: Deploy Resource Group ${{ env.resource_group_name }}
         uses: Azure/arm-deploy@v1
         with:
-          scope: subscription
-          subscriptionId: 8bf5716e-cbb9-4bef-86f6-42ed7d1a872a
-          region: Westeurope
+          scope: ${{ env.subscriptionId }}
+          subscriptionId: ${{ env.subscriptionId }}
+          region: ${{ env.location }}
           template: ./arm-templates/resourcegroup.json
-          parameters: location="Westeurope"
-            resourceGroupName=rg-githubactions
+          parameters: location= ${{ env.location }}
+            resourceGroupName=${{ env.resource_group_name }}
           deploymentName: rg-githubactions
 
       - name: Deploy Storage Account
@@ -51,20 +56,20 @@ jobs:
         id: storageAccountDeploy
         with:
           scope: resourcegroup
-          resourceGroupName: rg-githubactions
-          subscriptionId: 8bf5716e-cbb9-4bef-86f6-42ed7d1a872a
+          resourceGroupName: ${{ env.resource_group_name }}
+          subscriptionId: ${{ env.subscriptionId }}
           template: ./arm-templates/storageaccount.json
           parameters: sku=Standard_LRS
             storageAccountName=robbin003
-            location="Westeurope"
+            location= ${{ env.location }}
           deploymentMode: incremental
 
       - name: Deploy Virtual Machine
         uses: Azure/arm-deploy@v1
         with:
           scope: resourcegroup
-          resourceGroupName: rg-githubactions
-          subscriptionId: 8bf5716e-cbb9-4bef-86f6-42ed7d1a872a
+          resourceGroupName: ${{ env.resource_group_name }}
+          subscriptionId: ${{ env.subscriptionId }}
           template: ./arm-templates/virtualmachine.json
           parameters: adminPassword=${{ secrets.TEST_BUILDAGENT_ADMIN_PASSWORD }}
           deploymentMode: incremental
