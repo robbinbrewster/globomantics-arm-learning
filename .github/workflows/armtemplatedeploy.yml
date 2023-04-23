@@ -20,6 +20,8 @@ env:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+
+
   # This workflow contains a single job called "build"
   armDeployStaging:
     name: Deploy to Staging
@@ -35,6 +37,8 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+
+    
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
@@ -42,11 +46,12 @@ jobs:
       - name: Azure Login
         uses: Azure/login@v1
         with:
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+         creds: ${{ secrets.AZURE.CREDENTIALS}}
+      #          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
 
-          client-id: ${{ secrets.SP_CLIENT_ID }}
+      #    client-id: ${{ secrets.SP_CLIENT_ID }}
 
-          subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
+      #    subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
           # creds: ${{ secrets.AZURE.CREDENTIALS}}
 
       - name: Deploy Resource Group ${{ env.resource_group_name }}
