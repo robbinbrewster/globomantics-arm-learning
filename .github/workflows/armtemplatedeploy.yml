@@ -15,7 +15,8 @@ permissions:
   contents: read
 
 env:
-  resource_group_name: rg-githubactions
+        resource_group_name: rg-githubactions
+        location: WestEurope
   
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
