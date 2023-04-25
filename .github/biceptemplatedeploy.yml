@@ -45,7 +45,7 @@ jobs:
             --resource-group ${{ env.resource_group_name }} \
             --template-file ./bicep-templates/virtualnetwork.bicep \
             --parameters \
-            vNetPrefix=bicepazcli \
+            vNetPrefix=bicepazcli01 \
             location="${{ env.location }}"
 
   bicepArmDeployAction:
@@ -83,5 +83,5 @@ jobs:
           subscriptionId: ${{ env.subscriptionId }}
           template: ./bicep-templates/virtualnetwork.bicep
           parameters: 
-            vNetPrefix=biceparmdeploy
+            vNetPrefix=biceparmdeploy01
             location="${{ env.location }}"
