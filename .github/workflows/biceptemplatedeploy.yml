@@ -83,5 +83,5 @@ jobs:
           subscriptionId: ${{ env.subscriptionId }}
           template: ./bicep-templates/virtualnetwork.bicep
           parameters: 
-            vNetPrefix=biceparmdeploy01
+            vNetPrefix=biceparmdeploy04
             location="${{ env.location }}"
